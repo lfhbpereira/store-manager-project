@@ -3,6 +3,7 @@ const routers = require('./routers/index');
 
 const app = express();
 
+app.use(express.json());
 app.use(routers);
 
 app.get('/', (_req, res) => {
