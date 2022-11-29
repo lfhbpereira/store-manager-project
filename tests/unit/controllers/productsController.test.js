@@ -28,4 +28,21 @@ describe('Testing the Products Controller', function () {
       expect(res.json).to.have.been.calledWith(mockProducts.getAllProducts)
     });
   });
+
+  describe('When "getProductById" function is called', function () {
+    it('returns a specific product', async function () {
+      const req = { params: { id: 1 } };
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      sinon.stub(productsService, 'getProductById').resolves({ message: mockProducts.getAllProducts[0] });
+
+      await productsController.getProductById(req, res);
+
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith(mockProducts.getAllProducts[0])
+    });
+  });
 });

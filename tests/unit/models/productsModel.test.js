@@ -18,4 +18,14 @@ describe('Testing the Products Model', function () {
       expect(result).to.be.deep.equal(mockProducts.getAllProducts);
     });
   });
+
+  describe('When "getProductById" function is called', function () {
+    it('returns a specific product', async function () {
+      sinon.stub(connection, 'execute').resolves([[mockProducts.getAllProducts[0]]]);
+
+      const result = await productsModel.getProductById(1);
+
+      expect(result).to.be.deep.equal(mockProducts.getAllProducts[0]);
+    });
+  });
 });
