@@ -21,7 +21,7 @@ const insertProduct = async (req, res) => {
   const { name } = req.body;
   const { message } = await productsService.insertProduct(name);
 
-  return res.status(201).json(message);
+  res.status(201).json(message);
 };
 
 const updateProduct = async (req, res) => {
