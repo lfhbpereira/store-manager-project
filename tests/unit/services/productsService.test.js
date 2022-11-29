@@ -25,7 +25,7 @@ describe('Testing the Products Service', function () {
 
       const result = await productsService.getProductById(1);
 
-      expect(result.type).to.equal(null);
+      expect(result.type).to.be.equal(null);
       expect(result.message).to.be.deep.equal(mockProducts.getAllProducts[0]);
     });
   });
