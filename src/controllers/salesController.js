@@ -28,6 +28,18 @@ const insertSale = async (req, res) => {
   return res.status(201).json({ id: message, itemsSold: sales });
 };
 
+const updateSale = async (req, res) => {
+  const { id } = req.params;
+  const sales = req.body;
+  const { type, message } = await salesService.updateSale(id, sales);
+
+  if (type) {
+    return res.status(404).json({ message });
+  }
+
+  return res.status(200).json({ saleId: id, itemsUpdated: sales });
+};
+
 const deleteSale = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await salesService.deleteSale(id);
@@ -39,4 +51,4 @@ const deleteSale = async (req, res) => {
   return res.status(204).json();
 };
 
-module.exports = { getAllSales, getSaleById, insertSale, deleteSale };
+module.exports = { getAllSales, getSaleById, insertSale, updateSale, deleteSale };
