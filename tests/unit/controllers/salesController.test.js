@@ -45,4 +45,21 @@ describe('Testing the Sales Controller', function () {
       expect(res.json).to.have.been.calledWith(mockSales.getAllSales[0])
     });
   });
+
+  describe('When "insertSale" function is called', function () {
+    it('returns the inserted sale', async function () {
+      const req = { body: mockSales.newSaleReqBody };
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      sinon.stub(salesService, 'insertSale').resolves({ message: 3 });
+
+      await salesController.insertSale(req, res);
+
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(mockSales.newSale);
+    });
+  });
 });

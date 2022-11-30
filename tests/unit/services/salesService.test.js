@@ -3,6 +3,7 @@ const sinon = require('sinon');
 const mockSales = require('../../../src/helpers/mockSales');
 const salesModel = require('../../../src/models/salesModel');
 const salesService = require('../../../src/services/salesService');
+const productsModel = require('../../../src/models/productsModel');
 
 const { expect } = chai;
 
@@ -27,6 +28,19 @@ describe('Testing the Sales Service', function () {
 
       expect(result.type).to.be.equal(null);
       expect(result.message).to.be.deep.equal([mockSales.getAllSales[0]]);
+    });
+  });
+
+  describe('When "insertSale" function is called', function () {
+    it('returns the inserted sale', async function () {
+      sinon.stub(productsModel, 'getProductById').resolves([{}]);
+      sinon.stub(salesModel, 'insertSale').resolves(3);
+      sinon.stub(salesModel, 'insertProductSale').resolves();
+
+      const result = await salesService.insertSale(mockSales.insertSale);
+
+      expect(result.type).to.be.equal(null);
+      expect(result.message).to.be.equal(3);
     });
   });
 });

@@ -19,4 +19,36 @@ const getAllSales = [
   },
 ];
 
-module.exports = { getAllSales };
+const insertSale = [
+  {
+    productId: 1,
+    quantity: 1,
+  },
+];
+
+const newSale = {
+  id: 3,
+  itemsSold: [
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 1,
+    },
+  ],
+};
+
+const newSaleReqBody = [
+  {
+    productId: 1,
+    quantity: 1,
+  },
+  {
+    productId: 2,
+    quantity: 1,
+  },
+];
+
+module.exports = { getAllSales, insertSale, newSale, newSaleReqBody };
