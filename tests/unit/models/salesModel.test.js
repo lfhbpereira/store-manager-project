@@ -35,7 +35,7 @@ describe('Testing the Sales Model', function () {
 
       const result = await salesModel.insertSale();
 
-      expect(result).to.be.deep.equal(1);
+      expect(result).to.be.equal(1);
     });
   });
 

@@ -35,7 +35,7 @@ describe('Testing the Products Model', function () {
 
       const result = await productsModel.insertProduct('ProdutoX');
 
-      expect(result).to.be.deep.equal(4);
+      expect(result).to.be.equal(4);
     });
   });
 
@@ -45,7 +45,7 @@ describe('Testing the Products Model', function () {
 
       const result = await productsModel.deleteProduct(1);
 
-      expect(result).to.be.deep.equal(1);
+      expect(result).to.be.equal(1);
     });
   });
 });
