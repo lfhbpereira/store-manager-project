@@ -36,9 +36,9 @@ const updateProduct = async (product) => {
 };
 
 const deleteProduct = async (id) => {
-  const existingId = await productsModel.getProductById(id);
+  const productById = await productsModel.getProductById(id);
 
-  if (!existingId) {
+  if (!productById) {
     return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
   }
 
