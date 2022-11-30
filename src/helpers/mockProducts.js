@@ -13,4 +13,9 @@ const getAllProducts = [
   },
 ];
 
-module.exports = { getAllProducts };
+const insertProduct = {
+  id: 4,
+  name: 'ProdutoX',
+};
+
+module.exports = { getAllProducts, insertProduct };

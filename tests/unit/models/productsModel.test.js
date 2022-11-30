@@ -28,4 +28,24 @@ describe('Testing the Products Model', function () {
       expect(result).to.be.deep.equal(mockProducts.getAllProducts[0]);
     });
   });
+
+  describe('When "insertProduct" function is called', function () {
+    it('returns the inserted product id', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+
+      const result = await productsModel.insertProduct('ProdutoX');
+
+      expect(result).to.be.deep.equal(4);
+    });
+  });
+
+  describe('When "deleteProduct" function is called', function () {
+    it('deletes a product', async function () {
+      sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+      const result = await productsModel.deleteProduct(1);
+
+      expect(result).to.be.deep.equal(1);
+    });
+  });
 });
