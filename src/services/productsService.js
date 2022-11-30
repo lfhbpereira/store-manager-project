@@ -16,6 +16,17 @@ const getProductById = async (id) => {
   return { type: null, message: productById };
 };
 
+const getProductsByName = async (name) => {
+  const productByName = await productsModel.getProductsByName(name);
+  const allProducts = await productsModel.getAllProducts();
+
+  if (!productByName) {
+    return { message: allProducts };
+  }
+
+  return { message: productByName };
+};
+
 const insertProduct = async (name) => {
   const newId = await productsModel.insertProduct(name);
   const newProduct = await productsModel.getProductById(newId);
@@ -47,4 +58,11 @@ const deleteProduct = async (id) => {
   return { type: null, message: deletedProduct };
 };
 
-module.exports = { getAllProducts, getProductById, insertProduct, updateProduct, deleteProduct };
+module.exports = {
+  getAllProducts,
+  getProductById,
+  getProductsByName,
+  insertProduct,
+  updateProduct,
+  deleteProduct,
+};
